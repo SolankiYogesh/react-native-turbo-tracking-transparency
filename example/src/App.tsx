@@ -1,4 +1,4 @@
-import  { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import {
   StyleSheet,
   View,
@@ -14,19 +14,19 @@ import {
 } from 'react-native-turbo-tracking-transparency';
 
 const STATUS_COLORS: Record<string, string> = {
-  authorized: '#4CAF50',
-  denied: '#F44336',
-  restricted: '#FF9800',
+  'authorized': '#4CAF50',
+  'denied': '#F44336',
+  'restricted': '#FF9800',
   'not-determined': '#2196F3',
-  unavailable: '#9E9E9E',
+  'unavailable': '#9E9E9E',
 };
 
 const STATUS_LABELS: Record<string, string> = {
-  authorized: 'Authorized',
-  denied: 'Denied',
-  restricted: 'Restricted',
+  'authorized': 'Authorized',
+  'denied': 'Denied',
+  'restricted': 'Restricted',
   'not-determined': 'Not Determined',
-  unavailable: 'Unavailable',
+  'unavailable': 'Unavailable',
 };
 
 export default function App() {
@@ -39,7 +39,7 @@ export default function App() {
 
   useEffect(() => {
     refreshStatus();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleRequestPermission = async () => {
@@ -68,7 +68,9 @@ export default function App() {
               { backgroundColor: STATUS_COLORS[status] || '#eee' },
             ]}
           >
-            <Text style={styles.statusText}>{STATUS_LABELS[status] || status}</Text>
+            <Text style={styles.statusText}>
+              {STATUS_LABELS[status] || status}
+            </Text>
           </View>
         </View>
 
@@ -77,10 +79,10 @@ export default function App() {
             {status === 'not-determined'
               ? 'Permission has not been requested yet. Tap the button below to prompt the user.'
               : status === 'authorized'
-              ? 'Tracking permission granted! You can now use the IDFA.'
-              : status === 'denied'
-              ? 'Tracking permission was denied. You should respect the user’s choice.'
-              : 'App Tracking Transparency is only available on iOS 14+.'}
+                ? 'Tracking permission granted! You can now use the IDFA.'
+                : status === 'denied'
+                  ? 'Tracking permission was denied. You should respect the user’s choice.'
+                  : 'App Tracking Transparency is only available on iOS 14+.'}
           </Text>
         </View>
 
